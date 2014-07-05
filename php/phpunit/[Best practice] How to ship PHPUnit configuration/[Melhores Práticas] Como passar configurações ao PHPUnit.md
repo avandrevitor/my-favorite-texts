@@ -1,25 +1,25 @@
-[Best practice] How to ship PHPUnit configuration
-=================================================
+[Melhores Práticas] Como passar configurações ao PHPUnit
+========================================================
 
-PHPUnit offers quite a lot options to be set as arguments on the commandline. However this is tedious when typing over and over again.
+PHPUnit oferece muitas opções com vários parametros na linha de comando. No entanto, isto se torna chato e trabalhoso quando se digita mais de uma vez.
 
-For this reason you can create an [XML configuration file](http://www.phpunit.de/manual/current/en/appendixes.configuration.html) [phpunit.xml](http://www.phpunit.de/manual/current/en/appendixes.configuration.html) that will automatically be used by the phpunit binary.
+Por esta razão, você pode criar um [arquivo de configuração XML](http://www.phpunit.de/manual/current/en/appendixes.configuration.html) o [phpunit.xml](http://www.phpunit.de/manual/current/en/appendixes.configuration.html) que será automaticamente utilizada pelo binário phpunit.
 
-Now you may want to include this configuration file in your projects sourcecode to be used by all participating developers and your continuous integration server. But how?
+Agora você deve querer incluir este arquivo de configuração em seus projetos com código fonte, para poder ser utilizado por todos os desenvolvedores participantes e também seu servidor de integração contínua. Mas como ?
 
-## Well, you could just commit the phpunit.xml to you repository right?
+## Bom, você poderia simplesmente commitar o arquivo phpunit.xml para seu repositório, certo ?
 
-Well, yes. But then all developers who want to checkout and work on your project will have to use these settings or going through the trouble of maintaining local changes to the configuration or specifying a different one using the commandline.
+Sim, poderia. Mas, todos os desenvolvedores que quiserem trabalhar em seu projeto, devem fazer checkout é usar estas configurações ou passaram por problemas ao manter as alterações locais de configuração se não especificarem configurações diferentes por linha de comando.
 
-## No! Use phpunit.xml.dist instead.
+## Não! Em vez disso, use phpunit.xml.dist.
 
-[Sebastian made me aware of this](http://github.com/caefer/StreamHitching/commit/e1a6cef49ea6466403e3aea533728e04139e5d80) and he is right. If you provide a phpunit.xml.dist(ribution) instead then every developer can chose whether to use your configuration or his/her own.
+[Sebastian me explicou isto](http://github.com/caefer/StreamHitching/commit/e1a6cef49ea6466403e3aea533728e04139e5d80) e ele está certo. Se você fornecer um phpunit.xm.dist(ribuição) ao invés disso, cada desenvolvedor pode escolher se quer utilizar a sua configuração ou a dela/dele.
 
-It is also wise to ignore the real phpunit.xml for your repository using .gitignore or svn:ignore or similar. This way everybody can use the settings he/she wants without forcing them onto others.
+Também é aconselhável ignorar o phpunit.xml em seu repositório usando `.gitignore` ou `svn:ignore` ou similar. Desta forma, todos podem usar as configurações ele/ela sem forçar os outros a utilizar também.
 
-## How can my continuous integration server use the config?
+## Como meu servidor de integração contínua pode utilizar a configuração ?
 
-Simple! the phpunit binary is clever enough to use any phpunit.xml.dist file if no phpunit.xml is available.
+Simples! O binário do phpunit tem inteligência suficiente para usar qualquer arquivo, ele usa phpunit.xml.dist se o arquivo phpunit.xml não estiver disponível.
 
 link: [http://www.testically.org/2010/08/24/best-practice-how-to-ship-phpunit-configuration/](http://www.testically.org/2010/08/24/best-practice-how-to-ship-phpunit-configuration/)
 
